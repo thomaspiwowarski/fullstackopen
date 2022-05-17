@@ -1,0 +1,51 @@
+title tomaszpiwowarski
+
+note over browser:
+submit note
+end note
+
+browser->server: HTTP POST https://studies.cs.helsinki.fi/exampleapp/new_note
+server-->browser: Status 302 found, Location: /exampleapp/notes, do HTTP GET
+
+note over browser:
+page reloaded
+end note
+
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/notes
+server-->browser: HTML-code
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.css
+server-->browser: main.css
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.js
+server-->browser: main.js
+
+note over browser:
+js requests JSON data from server 
+end note
+
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/data.json
+server-->browser: [{"content":"ñññññ","date":"2022-05-10T22:25:50.826Z"}...]
+
+note over browser:
+browser executes the event handler
+that renders notes to display
+end note
+
+note over browser:
+my note is at the very bottom of the list
+end note
+
+browser->server: HTTP GET https://studies.cs.helsinki.fi/favicon.ico
+server-->browser: favicon.ico
+
+
+note over browser:
+favicon contains
+    <html>
+        <head>
+        </head>
+        <body>
+           <a href="/stats">Course stats</a>
+        </body>
+    </html>
+    and has content-type: text/html
+end note

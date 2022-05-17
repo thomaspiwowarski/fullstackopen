@@ -1,0 +1,14 @@
+title tomaszpiwowarski
+
+browser->server: HTTP POST https://studies.cs.helsinki.fi/exampleapp/new_note_spa
+
+note over browser:
+{content: "newnote", date: "2022-05-11T11:10:26.574Z"}
+end note
+
+server-->browser: 201 created
+
+note over browser:
+browser executes the event handler
+that renders notes to display
+end note
