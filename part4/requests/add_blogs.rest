@@ -1,0 +1,10 @@
+POST http://localhost:3003/api/blogs
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRvbWFzeiIsImlkIjoiNjI5YTE4ZDU0ZDljMDI3ZDEzNzBjOWRkIiwiaWF0IjoxNjU0MjY2NjAwfQ.7huFTAOPmh8Slv-OdBNLXGFt6e0LI9MeLG6Cq-Y4qts
+
+{
+    "title": "btestst",
+    "author": "Some Author",
+    "url": "http://xd.com",
+    "likes": 20
+}
