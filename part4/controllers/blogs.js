@@ -33,23 +33,20 @@ blogsRouter.delete("/:id", async (request, response) => {
       .status(401)
       .json({ error: "you do not have permission to delete this blog" });
   }
-  console.log("przeszlo");
   await Blog.findByIdAndDelete(request.params.id);
   response.status(204).end();
 });
 
 blogsRouter.put("/:id", async (request, response) => {
-  const { id } = request.params;
-  const { likes } = request.body;
+  const blog = request.body;
 
-  const updatedBlog = await Blog.findByIdAndUpdate(
-    id,
-    { likes },
-    {
-      new: true,
-    }
-  );
-  response.status(200).json(updatedBlog);
+  const updatedBlog = await Blog.findByIdAndUpdate(request.params.id, blog, {
+    new: true,
+    runValidators: true,
+    context: "query",
+  });
+  console.log(updatedBlog);
+  response.json(updatedBlog);
 });
 
 module.exports = blogsRouter;
